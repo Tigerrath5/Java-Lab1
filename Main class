@@ -1,0 +1,15 @@
+package labb1;
+
+public class Lab1B {
+	public static void main (String[] args){
+		System.out.println(Vector.vdef); 
+		
+		Vector v1 = new Vector(); 
+		System.out.println(v1); 
+		
+		//set to default method on v1
+		
+		Vector v2 = new Vector (1.0, 1.0, 2.0); 
+		System.out.println(v2); 
+	}
+}
