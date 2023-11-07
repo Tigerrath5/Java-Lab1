@@ -1,0 +1,43 @@
+package labb1;
+
+public class Vector {
+	private double x; 
+	private double y; 
+	private double z; 
+	
+	public static Vector vdef = new Vector(); 
+	
+	public Vector() {
+		setToDefault(); 
+	}
+	
+	public Vector(double arg1, double arg2, double arg3) {
+		this.x = arg1; 
+		this.y = arg2;
+		this.z = arg3; 
+	}
+		
+	public static void setDefault(Vector arg) {
+		vdef = arg; 
+	}
+	
+	public void setToDefault() {
+		x = 0.0; 
+		y = 0.0; 
+		z = 0.0; 
+	}
+	
+	public static Vector plus (Vector arg1, Vector arg2) {
+		
+	}
+	
+	public double length() {
+		double size = vdef. 
+		return  size; 
+	}
+	
+	public String toString() {
+			String vectorFormat = String.format("Vector = (%2.1f, %2.1f, %2.1f)", x , y, z); 
+			return vectorFormat; 
+	}
+}
