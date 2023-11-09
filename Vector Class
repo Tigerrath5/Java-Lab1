@@ -1,11 +1,11 @@
-package labb1;
+package lab1;
 
 public class Vector {
 	private double x; 
 	private double y; 
 	private double z; 
 	
-	public static Vector vdef = new Vector(); 
+	public static Vector vdef = new Vector(0.0, 0.0, 0.0); 
 	
 	public Vector() {
 		setToDefault(); 
@@ -22,18 +22,79 @@ public class Vector {
 	}
 	
 	public void setToDefault() {
-		x = 0.0; 
-		y = 0.0; 
-		z = 0.0; 
+		x = vdef.x; 
+		y = vdef.y; 
+		z = vdef.z; 
 	}
 	
 	public static Vector plus (Vector arg1, Vector arg2) {
-		
+		Vector v = new Vector(); 
+		v.x = arg1.x + arg2.x; 
+		v.y = arg1.y + arg2.y;
+		v.z = arg1.z + arg2.z; 
+		return v; 
+	}
+	
+	public Vector minus (Vector arg) {
+		Vector v = new Vector(); 
+		v.x = this.x - arg.x; 
+		v.y = this.y - arg.y;
+		v.z = this.z - arg.z; 
+		return v; 
+	}
+	
+	public Vector mult (double arg) {
+		this.x *= arg; 
+		this.y *= arg; 
+		this.z *= arg; 
+		return this; 
+	}
+	
+	public double mult (Vector arg) {
+		double product = this.x * arg.x + this.y * arg.y + this.z * arg.z; 
+		return product; 
 	}
 	
 	public double length() {
-		double size = vdef. 
-		return  size; 
+		double length = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2)); 
+		return  length; 
+	}
+	
+	public Vector matrixMult(double[][] arg) {
+		Vector v = new Vector(); 
+		if (arg.length != 3) {
+			if (arg[0].length != 3 || arg[1].length != 3 || arg[2].length != 3) {
+				System.out.println("Not a 3 by 3"); 
+				return this; 
+			}
+		}
+		
+		v.x = this.x * arg[0][0] + this.x * arg[0][1] + this.x * arg[0][2]; 
+		v.y = this.y * arg[1][0] + this.y * arg[1][1] + this.y * arg[1][2]; 
+		v.z = this.z * arg[2][0] + this.z * arg[2][1] + this.z * arg[2][2]; 
+		
+		return v; 
+	}
+	
+	public void norm() {
+		double length = this.length(); 
+		this.x = this.x * (1/length); 
+		this.y = this.y * (1/length); 
+		this.z = this.z * (1/length); 
+	}
+	
+	public int compare(Vector arg) {
+		double L1 = this.length(); 
+		double L2 = arg.length(); 
+		if (L1 == L2) {
+			return 0; 
+		}
+		else if (L1 > L2) {
+			return 1; 
+		}
+		else {
+			return -1; 
+		}
 	}
 	
 	public String toString() {
